@@ -10,9 +10,10 @@ import android.widget.TimePicker;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView mTextview;
     int hourOfDay1;
     int mitune1;
+    String Adress;
+    TextView mTextview;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +26,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(this);
 
-        TextView mTextView = (TextView) findViewById(R.id.textView);
+        mTextView = (TextView) findViewById(R.id.textView);
 
         @Override
         public void onClick(View v){
             if (v.getId() == R.id.button1) {
                 showTimePickerDialog();
             } else if (v.getId() == R.id.button2) {
+                 //if
+                 //上記の中でさらにifを加えていく、、、、
                 mTextview.setText();
+
             }
         }
     }
