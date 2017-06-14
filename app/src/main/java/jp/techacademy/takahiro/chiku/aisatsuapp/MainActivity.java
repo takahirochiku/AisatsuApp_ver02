@@ -10,13 +10,16 @@ import android.widget.TimePicker;
 
 import java.sql.Time;
 
+import static jp.techacademy.takahiro.chiku.aisatsuapp.R.id.button2;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView mTextview;
     int hourOfDay1;
     int minute1;
     String time;
-    
+    String Say;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,25 +29,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button1.setOnClickListener(this);
 
         Button button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(this);
 
         mTextview = (TextView) findViewById(R.id.textView);
 
+    }
         @Override
-        public void onClick(View v){
+        public void onClick(View v) {
             if (v.getId() == R.id.button1) {
                 showTimePickerDialog();
-            } else if (v.getId() == R.id.button2) {
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (time.compareTo("02:00") >= 0 && time.compareTo("09:59") <= 0){
-                    mTextview.setText("「おはよう」");
-                }else if (time.compareTo("10:00") >= 0 && time.compareTo("17:59") <= 0){
-                    mTextview.setText("「こんにちは」");
-                }else if (time.compareTo("18:00") >= 0 && time.compareTo("1:59") <= 0){
-                    mTextview.setText("「こんばんは」");}
-            }
-        }
+            } else if (v.getId() == button2) {
+                mTextview.setText(Say);
+                if (time.compareTo("02:00") >= 0 && time.compareTo("09:59") <= 0) {
+                    Say = String.valueOf("「おはよう」");
+                } else if (time.compareTo("10:00") >= 0 && time.compareTo("17:59") <= 0) {
+                    Say = String.valueOf("「こんにちは」");
+                } else if (time.compareTo("18:00") >= 0 && time.compareTo("1:59") <= 0) {
+                    Say = String.valueOf("「こんばんは」");
+                }
             }
         }
 
@@ -63,4 +65,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     true);
         }
     }
-}
