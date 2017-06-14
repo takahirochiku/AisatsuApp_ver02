@@ -8,12 +8,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.sql.Time;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    int hourOfDay1;
-    int mitune1;
-    String Adress;
     TextView mTextview;
+    int hourOfDay1;
+    int minute1;
+    String time;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,39 +26,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button1.setOnClickListener(this);
 
         Button button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(this);
 
-        mTextView = (TextView) findViewById(R.id.textView);
+        mTextview = (TextView) findViewById(R.id.textView);
 
         @Override
         public void onClick(View v){
             if (v.getId() == R.id.button1) {
                 showTimePickerDialog();
             } else if (v.getId() == R.id.button2) {
-                 //if
-                 //上記の中でさらにifを加えていく、、、、
-                mTextview.setText();
-
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (time.compareTo("02:00") >= 0 && time.compareTo("09:59") <= 0){
+                    mTextview.setText("「おはよう」");
+                }else if (time.compareTo("10:00") >= 0 && time.compareTo("17:59") <= 0){
+                    mTextview.setText("「こんにちは」");
+                }else if (time.compareTo("18:00") >= 0 && time.compareTo("1:59") <= 0){
+                    mTextview.setText("「こんばんは」");}
             }
         }
-    }
-    private void showTimePickerDialog() {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                         hourOfDay1 = hourOfDay;
-                         mitune1 = minute;
-                    }
-                },
-                13, // 初期値（時間）
-                0,  // 初期値（分）
-                true);
-             }
-    
-             @Override
-    public void onClick(View v) {
-        mTextView.setText(hourOfDay1);
-    }
+            }
+        }
 
+    private void showTimePickerDialog() {
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                    new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            hourOfDay1 = hourOfDay;
+                            minute1 = minute;
+                            time =String.valueOf(hourOfDay1) + ":" + String.valueOf(minute1);
+                        }
+                    },
+                    13, // 初期値（時間）
+                    0,  // 初期値（分）
+                    true);
+        }
     }
+}
