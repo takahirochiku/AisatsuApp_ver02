@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                             hourOfDay1 = hourOfDay;
                             minute1 = minute;
-                            time =String.valueOf(hourOfDay1) + ":" + String.valueOf(minute1);
+                            time =(String.valueOf(hourOfDay1) + ":" + String.valueOf(minute1));
                         }
                     },
                     13, // 初期値（時間）
