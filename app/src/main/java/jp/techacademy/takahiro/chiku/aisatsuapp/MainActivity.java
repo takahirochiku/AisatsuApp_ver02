@@ -10,6 +10,7 @@ import android.widget.TimePicker;
 import android.util.Log;
 import java.sql.Time;
 
+import static java.lang.String.valueOf;
 import static jp.techacademy.takahiro.chiku.aisatsuapp.R.id.button2;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,11 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 showTimePickerDialog();
             } else if (v.getId() == R.id.button2) {
                 if (hourOfDay1>2&&hourOfDay1<10){
-                    mTextview.setText(String.valueOf("「おはよう」"));
+                    mTextview.setText(valueOf("「おはよう」"));
                 } else if (hourOfDay1>10&&hourOfDay1<18){
-                    mTextview.setText(String.valueOf("「こんにちは」"));
+                    mTextview.setText(valueOf("「こんにちは」"));
                 } else if (hourOfDay1>10||hourOfDay1<2){
-                    mTextview.setText(String.valueOf("「こんばんは」"));
+                    mTextview.setText(valueOf("「こんばんは」"));
                 }
             }
         }
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
-                        public void onTimeSet(TimePicker view, int hourOfDay) {
+                        public void onTimeSet(TimePicker view, int hourOfDay,int mitute) {
                             hourOfDay1 = hourOfDay;
                         }
                     },
